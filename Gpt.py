@@ -2,20 +2,18 @@ import torch
 import torch.nn
 from torch.nn import functional
 
-dispositivo = "gpu" if torch.cuda.is_available() else "cpu"
+device = "gpu" if torch.cuda.is_available() else "cpu"
 
-#-----------------TOKENIZACION DEL DATASET-----------------------------
+#-----------------TOKENIZATION DEL DATASET-----------------------------
 
-#Leer datase y btener lista de valores unicos dentro del dataset
-with open("GptDesde0\DataSet.txt", "r", encoding="utf-8") as d:
-    data = d.read()
-valoresUnicos = sorted(list(set(data)))
+# Leer dataset y obtener lista de valores únicos dentro del dataset
+with open(r"GptDesde0\DataSet.txt", "r", encoding="utf-8") as f:
+    data = f.read()
+unique_values = sorted(list(set(data)))
 
-#Creamos nuestro diccionario de tokens y funciones codificaccion/descodificaccion
+# Creamos nuestro diccionario de tokens y funciones de codificación/decodificación
+value_to_number = {value: number for number, value in enumerate(unique_values)}
+number_to_value = {number: value for number, value in enumerate(unique_values)}
 
-ValorNumero = {valor: numero for numero, valor in enumerate(valoresUnicos)}
-NumeroValor = {numero: valor for numero, valor in enumerate(valoresUnicos)}
-
-codificar = lambda texto : [ValorNumero[caracter] for caracter in texto]
-descodificar = lambda lista_numeros : ''.join([NumeroValor[numero] for numero in lista_numeros])
-
+encode = lambda text: [value_to_number[char] for char in text]
+decode = lambda number_list: ''.join([number_to_value[number] for number in number_list])
