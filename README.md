@@ -10,11 +10,6 @@ El proyecto busca construir un pequeño modelo de lenguaje paso a paso, comenzan
 De esta manera, se explora cómo un modelo GPT aprende a predecir el siguiente carácter o palabra en un texto, comprendiendo los fundamentos detrás de los modelos modernos de lenguaje.
 
 ---
-💻 Ejecución
-Clona este repositorio: git clone https://github.com/tu-usuario/tu-repo.git
-cd tu-repo
-Ejecuta el script principal python Gpt.py
----
 
 ## ⚙️ Requisitos
 Asegúrate de tener instalado Python 3.10 o superior y los siguientes paquetes:
